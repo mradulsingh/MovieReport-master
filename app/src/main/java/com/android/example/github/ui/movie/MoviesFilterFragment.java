@@ -45,7 +45,7 @@ public class MoviesFilterFragment extends DialogFragment {
                 .setCancelable(false)
                 .setPositiveButton("apply", null)
                 .create();
-        alertDialog.setCanceledOnTouchOutside(false);
+//        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.setCancelable(false);
         alertDialog.setOnShowListener(dialog -> {
             onFocusChangelistener();

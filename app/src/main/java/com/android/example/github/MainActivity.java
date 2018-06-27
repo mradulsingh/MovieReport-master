@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        if (savedInstanceState == null) {
-            navigationController.navigateToMovieFilterFragment();
-//            navigationController.navigateToSearch();
-        }
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.container, new MovieListFragment());
-//        transaction.commit();
+//        if (savedInstanceState == null) {
+//            navigationController.navigateToMovieFilterFragment();
+////            navigationController.navigateToSearch();
+//        }
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, new MovieListFragment());
+        transaction.commit();
     }
 
     @Override

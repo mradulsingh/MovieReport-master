@@ -17,6 +17,7 @@
 package com.android.example.github.di;
 
 import com.android.example.github.GithubApp;
+import com.android.example.github.MoviesApp;
 
 import android.app.Application;
 
@@ -24,6 +25,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Provides;
 import dagger.android.AndroidInjectionModule;
 
 @Singleton
@@ -38,5 +40,5 @@ public interface AppComponent {
         @BindsInstance Builder application(Application application);
         AppComponent build();
     }
-    void inject(GithubApp githubApp);
+    void inject(MoviesApp moviesApp);
 }

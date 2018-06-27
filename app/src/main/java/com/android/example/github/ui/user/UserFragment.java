@@ -40,8 +40,8 @@ import javax.inject.Inject;
 
 public class UserFragment extends Fragment implements Injectable {
     private static final String LOGIN_KEY = "login";
-    @Inject
-    ViewModelProvider.Factory viewModelFactory;
+//    @Inject
+//    ViewModelProvider.Factory viewModelFactory;
     @Inject
     NavigationController navigationController;
 
@@ -73,7 +73,7 @@ public class UserFragment extends Fragment implements Injectable {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel.class);
+//        userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel.class);
         userViewModel.setLogin(getArguments().getString(LOGIN_KEY));
         userViewModel.getUser().observe(this, userResource -> {
             binding.get().setUser(userResource == null ? null : userResource.data);

@@ -5,9 +5,10 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
-//@Entity(tableName = "MovieInfoo")
-public class MovieInfoo implements Parcelable{
+@Entity(primaryKeys = "original_title")
+public class MovieInfoo{
     private String vote_average;
 
     @Ignore
@@ -26,7 +27,8 @@ public class MovieInfoo implements Parcelable{
     private String[] genre_ids;
 
     private String release_date;
-    @ColumnInfo(name = "title")
+
+    @NonNull
     private String original_title;
     @Ignore
     private String vote_count;
@@ -36,38 +38,44 @@ public class MovieInfoo implements Parcelable{
     private String video;
     @Ignore
     private String popularity;
+
     @Ignore
     public MovieInfoo() {
     }
 
-    public MovieInfoo(Parcel in) {
-        vote_average = in.readString();
-        backdrop_path = in.readString();
-        adult = in.readString();
-        id = in.readString();
-        title = in.readString();
-        overview = in.readString();
-        original_language = in.readString();
-        genre_ids = in.createStringArray();
-        release_date = in.readString();
-        original_title = in.readString();
-        vote_count = in.readString();
-        poster_path = in.readString();
-        video = in.readString();
-        popularity = in.readString();
+    public MovieInfoo(String id, String overview, String original_language, String release_date, String original_title) {
+        this.id = id;
+        this.overview = overview;
+        this.original_language = original_language;
+        this.release_date = release_date;
+        this.original_title = original_title;
+        //        vote_average = in.readString();
+//        backdrop_path = in.readString();
+//        adult = in.readString();
+//        id = in.readString();
+//        title = in.readString();
+//        overview = in.readString();
+//        original_language = in.readString();
+//        genre_ids = in.createStringArray();
+//        release_date = in.readString();
+//        original_title = in.readString();
+//        vote_count = in.readString();
+//        poster_path = in.readString();
+//        video = in.readString();
+//        popularity = in.readString();
     }
 
-    public static final Creator<MovieInfoo> CREATOR = new Creator<MovieInfoo>() {
-        @Override
-        public MovieInfoo createFromParcel(Parcel in) {
-            return new MovieInfoo(in);
-        }
-
-        @Override
-        public MovieInfoo[] newArray(int size) {
-            return new MovieInfoo[size];
-        }
-    };
+//    public static final Creator<MovieInfoo> CREATOR = new Creator<MovieInfoo>() {
+//        @Override
+//        public MovieInfoo createFromParcel(Parcel in) {
+//            return new MovieInfoo(in);
+//        }
+//
+//        @Override
+//        public MovieInfoo[] newArray(int size) {
+//            return new MovieInfoo[size];
+//        }
+//    };
 
     public String getVote_average ()
     {
@@ -215,26 +223,26 @@ public class MovieInfoo implements Parcelable{
         return "ClassPojo [vote_average = "+vote_average+", backdrop_path = "+backdrop_path+", adult = "+adult+", id = "+id+", title = "+title+", overview = "+overview+", original_language = "+original_language+", genre_ids = "+genre_ids+", release_date = "+release_date+", original_title = "+original_title+", vote_count = "+vote_count+", poster_path = "+poster_path+", video = "+video+", popularity = "+popularity+"]";
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(vote_average);
-        parcel.writeString(backdrop_path);
-        parcel.writeString(adult);
-        parcel.writeString(id);
-        parcel.writeString(title);
-        parcel.writeString(overview);
-        parcel.writeString(original_language);
-        parcel.writeStringArray(genre_ids);
-        parcel.writeString(release_date);
-        parcel.writeString(original_title);
-        parcel.writeString(vote_count);
-        parcel.writeString(poster_path);
-        parcel.writeString(video);
-        parcel.writeString(popularity);
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel parcel, int i) {
+//        parcel.writeString(vote_average);
+//        parcel.writeString(backdrop_path);
+//        parcel.writeString(adult);
+//        parcel.writeString(id);
+//        parcel.writeString(title);
+//        parcel.writeString(overview);
+//        parcel.writeString(original_language);
+//        parcel.writeStringArray(genre_ids);
+//        parcel.writeString(release_date);
+//        parcel.writeString(original_title);
+//        parcel.writeString(vote_count);
+//        parcel.writeString(poster_path);
+//        parcel.writeString(video);
+//        parcel.writeString(popularity);
+//    }
 }

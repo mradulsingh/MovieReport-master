@@ -20,7 +20,10 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 
 import com.android.example.github.api.GithubService;
+import com.android.example.github.api.MovieService;
 import com.android.example.github.db.GithubDb;
+import com.android.example.github.db.MovieDao;
+import com.android.example.github.db.MovieDb;
 import com.android.example.github.db.RepoDao;
 import com.android.example.github.db.UserDao;
 import com.android.example.github.util.LiveDataCallAdapterFactory;
@@ -34,7 +37,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module(includes = ViewModelModule.class)
 class AppModule {
-    @Singleton @Provides
+
+    private static final String BASE_URL = "https://api.themoviedb.org/3/";
+
+    @Singleton
+    @Provides
+    public static MovieService provideMovieService() {
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(MovieService.class);
+    }
+
+    @Singleton
+    @Provides
     GithubService provideGithubService() {
         return new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
@@ -44,18 +61,34 @@ class AppModule {
                 .create(GithubService.class);
     }
 
-    @Singleton @Provides
+    @Singleton
+    @Provides
     GithubDb provideDb(Application app) {
         return Room.databaseBuilder(app, GithubDb.class,"github.db").build();
     }
 
-    @Singleton @Provides
+    @Singleton
+    @Provides
+    MovieDb provideMovieDb(Application application){
+        return Room.databaseBuilder(application, MovieDb.class, "MovieDb.db").build();
+    }
+
+    @Singleton
+    @Provides
     UserDao provideUserDao(GithubDb db) {
         return db.userDao();
     }
 
-    @Singleton @Provides
+    @Singleton
+    @Provides
     RepoDao provideRepoDao(GithubDb db) {
         return db.repoDao();
     }
+
+    @Singleton
+    @Provides
+    MovieDao provideMovieDao(MovieDb movieDb){
+        return movieDb.movieDao();
+    }
+
 }

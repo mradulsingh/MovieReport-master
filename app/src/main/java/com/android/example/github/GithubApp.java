@@ -39,7 +39,7 @@ public class GithubApp extends Application implements HasActivityInjector {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
-        AppInjector.init(this);
+//        AppInjector.init(this);
     }
 
     @Override

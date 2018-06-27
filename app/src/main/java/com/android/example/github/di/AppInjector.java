@@ -16,7 +16,7 @@
 
 package com.android.example.github.di;
 
-import com.android.example.github.GithubApp;
+import com.android.example.github.MoviesApp;
 
 import android.app.Activity;
 import android.app.Application;
@@ -34,10 +34,10 @@ import dagger.android.support.HasSupportFragmentInjector;
  */
 public class AppInjector {
     private AppInjector() {}
-    public static void init(GithubApp githubApp) {
-        DaggerAppComponent.builder().application(githubApp)
-                .build().inject(githubApp);
-        githubApp
+    public static void init(MoviesApp moviesApp) {
+        DaggerAppComponent.builder().application(moviesApp)
+                .build().inject(moviesApp);
+        moviesApp
                 .registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
                     @Override
                     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
